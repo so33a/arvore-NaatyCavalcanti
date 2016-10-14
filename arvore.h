@@ -19,7 +19,6 @@ link rotR(ARVORE a, link h);
 link rotL(ARVORE a, link h);
 void inserir (ARVORE a, int key);
 void inserirNaRaiz (ARVORE a, int key);
-
 void remover (ARVORE a, int key);
 void removerNo (ARVORE a, link node);
 void imprimeEmOrdem (ARVORE a);
