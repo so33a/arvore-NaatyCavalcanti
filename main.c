@@ -25,6 +25,7 @@
 int main () {
   ARVORE a = novaArvore();
   link x;
+  int item;
   inserir(a, 55);
   inserir(a, 44);
   inserir(a, 33);
@@ -74,6 +75,14 @@ int main () {
    printf ("Insere na Raiz o elemento 46\n");
    imprimeEmLargura(a);
    printf("\n");
-
+    
+  remover(a, item);
+  printf("%d" , a->raiz);
+  
+  removerNo(a, h->left);
+  removerNo(a, h->right);
+  
+  destroiArvore(a);;
+  
   return 0;
 }
