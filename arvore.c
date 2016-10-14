@@ -49,7 +49,6 @@ void imprimePosOrdem (ARVORE a) {
   imprimePosOrdemR(a, a->raiz);
 }
 
-
 void imprimeEmOrdemR (ARVORE a, link h) {
    if (h != a->z) {
      imprimeEmOrdemR(a, h->left);
@@ -145,10 +144,25 @@ link rotR(ARVORE a, link h) {
   return x;
 }
 
-#if 0
-void remover (ARVORE a, int key);
-void removerNo (ARVORE a, link node);
-void destroiArvore(ARVORE a);
-#endif 
+void remover (ARVORE a, int key){
+	if(h != a->z){
+		removerNo(a, a->raiz);
+		free (a);
+	}
+}
+
+void removerNo (ARVORE a, link h){
+	if(h != a->z){
+    removerNo(a, h->left);
+		removerNo(a, h->right);
+		free(h);
+	}
+}
+
+void destroiArvore(ARVORE a){
+  destroiArvore(a);
+  destroiArvore(a->raiz);
+}
+
 
 
