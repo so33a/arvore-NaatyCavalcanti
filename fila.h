@@ -1,6 +1,5 @@
 #ifndef FILA_H
 #define FILA_H
-
 #include "arvore.h"
 
 typedef struct nodeLista * linkLista;
@@ -18,7 +17,5 @@ FILA novaFila();
 void enfilar (FILA f, link n);
 link desenfilar (FILA f);
 void destroiFila(FILA f);
-
-
 
 #endif
