@@ -8,6 +8,7 @@ FILA novaFila() {
   f->ultimo = NULL;
   return f;
 }
+
 void imprimeFila (FILA f) {
    linkLista l = f->primeiro;
    while (l != NULL) {
@@ -16,6 +17,7 @@ void imprimeFila (FILA f) {
    }
    printf ("\n");
 }
+
 void enfilar (FILA f, link n) {
   linkLista n1 = malloc(sizeof(struct nodeLista));
   n1->noArvore =  n;
@@ -28,6 +30,7 @@ void enfilar (FILA f, link n) {
     f->ultimo = n1;
   }
 }
+
 link desenfilar (FILA f) {
   link aux;
   linkLista aux2;
@@ -47,5 +50,3 @@ void destroiFila(FILA f) {
   }
   free(f); f = NULL;
 }
-
-
