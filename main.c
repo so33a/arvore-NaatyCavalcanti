@@ -52,14 +52,12 @@ int main () {
   else
     printf ("Achou %d \n", x->key);
   
-
   x = busca(a, 1);
   if (x == NULL) 
     printf ("Nao achou\n");
   else 
     printf ("Achou %d \n", x->key);
  
-
    x = busca(a, 55);
    a->raiz = rotR(a, x);
    printf ("Em largura depois de rotR(55)\n");
@@ -76,13 +74,5 @@ int main () {
    imprimeEmLargura(a);
    printf("\n");
     
-  remover(a, item);
-  printf("%d" , a->raiz);
-  
-  removerNo(a, h->left);
-  removerNo(a, h->right);
-  
-  destroiArvore(a);;
-  
-  return 0;
+   return 0;
 }
