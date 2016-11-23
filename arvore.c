@@ -145,24 +145,70 @@ link rotR(ARVORE a, link h) {
 }
 
 void remover (ARVORE a, int key){
-	if(h != a->z){
-		removerNo(a, a->raiz);
-		free (a);
-	}
+   removerNo(a, busca(a, key));
 }
 
-void removerNo (ARVORE a, link h){
-	if(h != a->z){
-    removerNo(a, h->left);
-		removerNo(a, h->right);
-		free(h);
-	}
+void removerNo (ARVORE a, link node){
+	link aux = a->raiz;
+    link pai = NULL;
+    char direcao;
+
+    if(node == aux ){
+        pai = NULL;
+    }else if(node->key < aux->key){     //lado esquerdo
+        if(node->key == aux->left->key){
+            pai = aux;
+            direcao = 'e';
+        }else{
+            removerNo(aux->left, node);
+        }
+    }else if(node->key >= aux->key){    //lado Direito
+        if(node->key == aux->right->key){
+            pai = aux;
+            direcao = 'd';
+        }else{
+            removerNo(aux->right, node);
+        }
+    }
+
+    if(node->left == a->z && node->right == a->z){ ///Node é uma FOLHA
+        if(direcao == 'e'){
+            pai->left = a->z;
+        }else
+            pai->right = a->z;
+        free(node);
+    }else if(node->left != a->z && node->right == a->z){ ///Node tem UM FILHO a ESQUERDA
+        if(direcao == 'e'){
+            pai->left = node->left;
+        }else
+            pai->right = node->left;
+    }else if(node->left == a->z && node->right != a->z){ ///Node tem UM FILHO a DIREITA
+        if(direcao == 'e'){
+            pai->left = node->right;
+        }else
+            pai->right = node->right;
+    }else{  /// Node tem DOIS FILHOS
+        link auxNode1 = node;
+        link auxNode2 = node->left;
+
+        while(auxNode2->right != a->z){
+            auxNode1 = auxNode2;
+            auxNode2 = auxNode2->right;
+        }
+        if(auxNode1 != node){
+            auxNode1->right = auxNode2->left;
+            auxNode2->left = node->left;
+        }
+        auxNode2->right = node->right;
+        a->raiz = auxNode2;
+    }
+    free(node);
 }
 
 void destroiArvore(ARVORE a){
-  destroiArvore(a);
-  destroiArvore(a->raiz);
+  if(a->raiz != a->z){
+        destroiArvore(a->raiz->left);
+        destroiArvore(a->raiz->right);
+    }
+    free(a);
 }
-
-
-
